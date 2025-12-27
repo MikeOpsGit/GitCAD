@@ -462,7 +462,11 @@ elif [ "$STASH_COMMAND" = "pop" ] || [ "$STASH_COMMAND" = "apply" ] || [ "$STASH
         }
         echo "SUCCESS" >&2
 
+        # "$git_path" stat >&2
+        # "$git_path" update-index --refresh -q >/dev/null 2>&1
+        "$git_path" update-index --really-refresh -q >/dev/null 2>&1
         "$git_path" fcmod "$FCStd_file_path"
+        "$git_path" update-index --really-refresh -q >/dev/null 2>&1
     done
 
 
@@ -621,6 +625,7 @@ elif [ "$STASH_COMMAND" = "push" ] || [ "$STASH_COMMAND" = "save" ] || [ "$STASH
         }
         echo "SUCCESS" >&2
         
+        "$git_path" stat >&2
         "$git_path" fcmod "$FCStd_file_path"
     done
 

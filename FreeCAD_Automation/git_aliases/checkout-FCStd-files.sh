@@ -245,6 +245,7 @@ for FCStd_dir_path in "${FCStd_dirs_to_checkout[@]}"; do
     
     # Only clear modification flag when checking out HEAD (resetting modified files)
     if [ "$IS_HEAD_CHECKOUT" = "$TRUE" ]; then
+        "$git_path" stat >&2
         "$git_path" fcmod "$FCStd_file_path"
         echo "DEBUG: Cleared modification flag for '$FCStd_file_path' (HEAD checkout)" >&2
     fi

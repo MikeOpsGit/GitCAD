@@ -147,7 +147,8 @@ for FCStd_file_path in "${FCStd_files_to_process[@]}"; do
     }
 
     echo "SUCCESS" >&2
-
+    
+    "$git_path" stat >&2
     "$git_path" fcmod "$FCStd_file_path"
 
     if [ "$REQUIRE_LOCKS" = "$TRUE" ]; then
@@ -181,6 +182,7 @@ for changefile in "${changefiles_to_process[@]}"; do
 
     echo "SUCCESS" >&2
 
+    "$git_path" stat >&2
     "$git_path" fcmod "$FCStd_file_path"
 
     FCStd_dir_path=$(dirname "$changefile")
